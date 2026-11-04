@@ -1,0 +1,104 @@
+return {
+    {
+        "nvim-tree/nvim-tree.lua",
+
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+
+        keys = {
+            {
+                "<leader>e",
+                "<cmd>NvimTreeToggle<CR>",
+                desc = "Toggle file tree",
+            },
+            {
+                "<leader>fe",
+                "<cmd>NvimTreeFindFile<CR>",
+                desc = "Find current file in tree",
+            },
+        },
+
+        opts = {
+            view = {
+                side = "left",
+                width = 32,
+                preserve_window_proportions = true,
+            },
+
+            renderer = {
+                group_empty = true,
+                highlight_git = true,
+                highlight_opened_files = "name",
+                icons = {
+                    show = {
+                        file = true,
+                        folder = true,
+                        folder_arrow = true,
+                        git = true,
+                    },
+                },
+            },
+
+            filters = {
+                dotfiles = false,
+                custom = {
+                    "^\\.git$",
+                },
+            },
+
+            git = {
+                enable = true,
+                ignore = false,
+                timeout = 400,
+            },
+
+            diagnostics = {
+                enable = true,
+                show_on_dirs = true,
+                show_on_open_dirs = true,
+            },
+
+            update_focused_file = {
+                enable = true,
+                update_root = true,
+                ignore_list = {},
+            },
+
+            view = {
+                side = "left",
+                width = 32,
+                preserve_window_proportions = true,
+            },
+
+            sync_root_with_cwd = true,
+
+            respect_buf_cwd = true,
+
+            actions = {
+                open_file = {
+                    quit_on_open = false,
+                    resize_window = true,
+                    window_picker = {
+                        enable = true,
+                    },
+                },
+                remove_file = {
+                    close_window = true,
+                },
+            },
+
+            ui = {
+                confirm = true,
+                update_cwd = true,
+                hide_dotfiles = false,
+            },
+
+            sort = {
+                sorter = "name",
+                folders_first = true,
+            },
+        },
+    },
+}
+
