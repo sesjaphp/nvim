@@ -90,8 +90,20 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+vim.api.nvim_create_autocmd("BufNewFile", {
+    pattern = "*.cpp",
+    callback = function()
+        vim.api.nvim_buf_set_lines(0, 0, -1, false, {
+            "#include <iostream>",
+            "",
+            "int main() {",
+            "    return 0;",
+            "}",
+        })
+    end,
+})
+
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 require("lsp")
-
