@@ -90,9 +90,14 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
-vim.api.nvim_create_autocmd("BufNewFile", {
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
     pattern = "*.cpp",
     callback = function()
+        local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+        if #lines ~= 1 or lines[1] ~= "" then
+            return
+        end
+
         vim.api.nvim_buf_set_lines(0, 0, -1, false, {
             "#include <iostream>",
             "",
